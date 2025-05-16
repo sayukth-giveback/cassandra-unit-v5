@@ -248,7 +248,7 @@ public class EmbeddedCassandraServerHelper {
      * @return the cassandra RPC port
      */
     public static int getRpcPort() {
-        return DatabaseDescriptor.getRpcPort();
+        return DatabaseDescriptor.getNativeTransportPort();
     }
 
     /**
@@ -296,7 +296,7 @@ public class EmbeddedCassandraServerHelper {
         try {
             Files.delete(dir.toPath());
         } catch (Throwable t) {
-            throw new FSWriteError(t, dir);
+            throw new FSWriteError(t);
         }
     }
     
